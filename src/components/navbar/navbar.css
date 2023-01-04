@@ -1,0 +1,10 @@
+.navbar {
+  border-bottom: black solid 3px;
+  display: flex;
+  justify-content: center;
+  margin: 0em 26em;
+}
+.navbar-text {
+  margin-bottom: 6px;
+  margin-top: 1.3em;
+}

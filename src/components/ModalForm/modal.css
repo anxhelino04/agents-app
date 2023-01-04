@@ -1,0 +1,65 @@
+.ant-btn-default {
+  visibility: hidden;
+}
+.ant-btn-primary {
+  visibility: hidden;
+}
+.buttn {
+  background-color: #0e1d38;
+  color: white;
+  padding: 6px;
+  border-radius: 8px;
+  padding-inline: 38px;
+  cursor: pointer;
+  border: none;
+  margin: 0px 191px;
+}
+
+.ant-modal .ant-modal-content {
+  position: relative;
+  background-color: #1a4a75;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px 0 rgb(0 0 0 / 8%), 0 3px 6px -4px rgb(0 0 0 / 12%),
+    0 9px 28px 8px rgb(0 0 0 / 5%);
+  pointer-events: auto;
+  padding: 20px 24px;
+}
+.modal-title {
+  color: white;
+  border-bottom: black 3px solid;
+}
+.modal-navbar {
+  border-bottom: black solid 3px;
+  display: flex;
+  justify-content: center;
+  margin: 0 114px;
+}
+.navbar-title {
+  margin-bottom: 6px;
+  margin-top: 1.3em;
+  color: white;
+}
+.modal-forms {
+  /* display: flex; */
+  /* justify-content: center; */
+  margin-left: 114px;
+}
+.containerr {
+  margin-top: 2em;
+}
+.input-form {
+  width: 220px;
+  height: 20px;
+  border-radius: 7px;
+  border: none;
+  background-color: #0e1d38;
+  padding: 4px;
+  padding-inline: 13px;
+  color: white;
+}
+.form-label {
+  color: white;
+  margin-left: 3px;
+}
