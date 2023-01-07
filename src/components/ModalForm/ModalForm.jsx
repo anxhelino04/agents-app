@@ -1,17 +1,20 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import "./modal.css";
-import AgentList from "../AgentList/AgentList";
-const ModalForm = ({ isModalOpen, handleCancel, setIsModalOpen }) => {
-  const [agents, setAgents] = useState([]);
+const ModalForm = ({
+  isModalOpen,
+  handleCancel,
+  setIsModalOpen,
+  setAgents,
+  agents,
+}) => {
   const [fname, setFname] = useState("");
   const [pnumber, setPnumber] = useState("");
   const [email, setEmail] = useState("");
   const [realestate, setRealestate] = useState("");
-  // const fname = useRef();
-  // const pnumber = useRef();
-  // const email = useRef();
-  // const realestate = useRef();
+  const [fnamemsg, setFnamemsg] = useState("");
+  const [pnumbermsg, setPnumbermsg] = useState("");
+  const [emailmsg, setEmailmsg] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
     let agent = {
@@ -20,16 +23,29 @@ const ModalForm = ({ isModalOpen, handleCancel, setIsModalOpen }) => {
       email,
       realestate,
     };
-    setAgents([...agents, agent]);
-    setFname("");
-    setEmail("");
-    setPnumber("");
-    setRealestate("");
-    setIsModalOpen(false);
+    if (fname.length > 0 && pnumber.length > 0 && email.length > 0) {
+      setAgents([...agents, agent]);
+      setFname("");
+      setEmail("");
+      setPnumber("");
+      setRealestate("");
+      setIsModalOpen(false);
+    }
+    if (fname.length < 1) {
+      setFnamemsg("*Full name is required");
+    }
+    if (pnumber.length < 1) {
+      setPnumbermsg("*Number is required");
+    }
+    if (email.length < 1) {
+      setEmailmsg("*Email is required");
+    }
   };
   useEffect(() => {
     localStorage.setItem("agents", JSON.stringify(agents));
   }, [agents]);
+  console.log(agents, "setting agents");
+
   return (
     <Modal open={isModalOpen} onCancel={handleCancel}>
       <div className="modal-navbar">
@@ -47,8 +63,8 @@ const ModalForm = ({ isModalOpen, handleCancel, setIsModalOpen }) => {
             type="text"
             onChange={(e) => setFname(e.target.value)}
           ></input>
+          <p className="msg">{fnamemsg}</p>
         </div>
-        <br></br>
         <div className="modal-forms">
           <label className="form-label">Number*</label>
           <br></br>
@@ -56,12 +72,12 @@ const ModalForm = ({ isModalOpen, handleCancel, setIsModalOpen }) => {
             required
             value={pnumber}
             placeholder="+35569xxxxxxx"
-            className="input-form"
-            type="text"
+            className="input-form "
+            type="number"
             onChange={(e) => setPnumber(e.target.value)}
           ></input>
+          <p className="msg">{pnumbermsg}</p>
         </div>
-        <br></br>
         <div className="modal-forms">
           <label className="form-label">Email*</label>
           <br></br>
@@ -70,11 +86,11 @@ const ModalForm = ({ isModalOpen, handleCancel, setIsModalOpen }) => {
             required
             placeholder="johnsmith@gmail.com"
             className="input-form"
-            type="text"
+            type="email"
             onChange={(e) => setEmail(e.target.value)}
           ></input>
+          <p className="msg">{emailmsg}</p>
         </div>
-        <br></br>
         <div className="modal-forms">
           <label className="form-label">Realestate</label>
           <br></br>

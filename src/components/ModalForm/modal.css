@@ -59,7 +59,20 @@
   padding-inline: 13px;
   color: white;
 }
+
 .form-label {
   color: white;
   margin-left: 3px;
+}
+.msg {
+  color: white;
+  margin: 3px;
+  margin-left: 63px;
+  font-style: italic;
+  font-weight: 100;
+}
+input[type="number"].input-form::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -1,0 +1,30 @@
+.agentCard {
+  border: 2px solid black;
+  height: 93px;
+  display: flex;
+  margin-bottom: 1px;
+}
+.cardDetails {
+  flex: 1;
+  border: 2px solid blue;
+  min-height: 481px;
+}
+.container {
+  display: flex;
+  margin-block: 2em;
+  margin-inline: 16em;
+  gap: 2em;
+  max-height: 30em;
+}
+.fname {
+  margin: 0px;
+}
+.content {
+  margin: 0px;
+  font-size: 11px;
+}
+.delete {
+  height: 1.2em;
+  width: 1.2em;
+  cursor: pointer;
+}
