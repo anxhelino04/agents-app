@@ -9,8 +9,6 @@ const ModalForm = ({
   setIsModalOpen,
   setAgents,
   agents,
-  id,
-  setId,
 }) => {
   const [fname, setFname] = useState("");
   const [pnumber, setPnumber] = useState();
@@ -26,18 +24,15 @@ const ModalForm = ({
       pnumber,
       email,
       realestate,
-      id,
+      id: nanoid(6),
     };
     if (fname.length > 0 && pnumber.length > 0 && email.length > 0) {
-      var idd = nanoid();
-
       setAgents([...agents, agent]);
       setFname("");
       setEmail("");
       setPnumber("");
       setRealestate("");
       setIsModalOpen(false);
-      setId(idd);
     }
     if (fname.length < 1) {
       setFnamemsg("*Full name is required");

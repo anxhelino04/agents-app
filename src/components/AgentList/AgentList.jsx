@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import "./AgentList.css";
-const AgentList = ({
-  agents,
-  deleteAgent,
-  handleEdit,
-  showEditModal,
-  setId,
-  id,
-}) => {
-  // const [selectedId, setSelectedId] = useState();
-  // console.log(agents, "getting");
-  // console.log(selectedId, "selectedid");
-
+const AgentList = ({ agents, deleteAgent, handleEdit, showEditModal }) => {
   return (
     <div className="container">
       <div className="cardDetails">
@@ -22,9 +11,6 @@ const AgentList = ({
       </div>
       <div style={{ flex: 1 }}>
         {agents?.map((agent, index) => {
-          console.log(index, "indexx");
-          setId(index);
-          console.log(id, "id");
           return (
             <div className="agentCard" key={index}>
               <div style={{ marginInline: "6.5em" }}>

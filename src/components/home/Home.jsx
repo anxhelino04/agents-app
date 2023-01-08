@@ -7,7 +7,6 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [agentOnEdit, setAgentOnEdit] = useState();
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-  const [id, setId] = useState();
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -47,8 +46,6 @@ const Home = () => {
         deleteAgent={deleteAgent}
         handleEdit={handleEdit}
         showEditModal={showEditModal}
-        id={id}
-        setId={setId}
       />
       <ModalForm
         setIsModalOpen={setIsModalOpen}
