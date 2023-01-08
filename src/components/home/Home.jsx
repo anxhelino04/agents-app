@@ -7,7 +7,7 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [agentOnEdit, setAgentOnEdit] = useState();
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-
+  const [id, setId] = useState();
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -27,6 +27,7 @@ const Home = () => {
   const cancelEdit = () => {
     setIsEditModalVisible(false);
   };
+
   const handleEdit = (agent) => {
     setAgentOnEdit(agent);
     console.log(agent, "agentOnEdit when selected");
@@ -39,8 +40,6 @@ const Home = () => {
     }
   };
   const [agents, setAgents] = useState(getDatafromLs() || []);
-  const EditHandler = () => {};
-
   return (
     <div>
       <AgentList
@@ -48,6 +47,8 @@ const Home = () => {
         deleteAgent={deleteAgent}
         handleEdit={handleEdit}
         showEditModal={showEditModal}
+        id={id}
+        setId={setId}
       />
       <ModalForm
         setIsModalOpen={setIsModalOpen}
@@ -63,7 +64,7 @@ const Home = () => {
         cancelEdit={cancelEdit}
         agentOnEdit={agentOnEdit}
         setAgentOnEdit={setAgentOnEdit}
-        EditHandler={EditHandler}
+        setIsEditModalVisible={setIsEditModalVisible}
       />
       <AddButton showModal={showModal} />
     </div>

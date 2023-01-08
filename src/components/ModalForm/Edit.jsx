@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "antd";
 const Edit = ({
   isEditModalVisible,
@@ -7,7 +7,7 @@ const Edit = ({
   agentOnEdit,
   setAgentOnEdit,
   cancelEdit,
-  EditHandler,
+  setIsEditModalVisible,
 }) => {
   const onChangeName = (e) => {
     let copyObj = JSON.parse(JSON.stringify(agentOnEdit));
@@ -26,10 +26,23 @@ const Edit = ({
     setAgentOnEdit({ ...copyObj, realestate: e.target.value });
   };
   const cancelEditt = () => {
-    setAgentOnEdit({});
+    setAgentOnEdit(null);
     cancelEdit();
   };
-  console.log(agentOnEdit, "agentOnEdit when cancel");
+  console.log(agentOnEdit, "agentOnEdit in edit component");
+
+  const onSaveHandler = () => {
+    let copyAgents = JSON.parse(JSON.stringify(agents));
+    let foundAgentIndex = agents.findIndex(
+      (agent) => agent.id === agentOnEdit.id
+    );
+
+    let finalData = copyAgents.splice(foundAgentIndex, 1, agentOnEdit);
+    localStorage.setItem("agents", JSON.stringify(copyAgents));
+    setIsEditModalVisible(false);
+    setAgents(JSON.parse(localStorage.getItem("agents")));
+  };
+
   return (
     <Modal open={isEditModalVisible} onCancel={cancelEditt}>
       <div className="modal-navbar">
@@ -89,8 +102,8 @@ const Edit = ({
         </div>
         <br></br>
         <br></br>
-        <button onClick={EditHandler} className="buttn">
-          EDIT
+        <button onClick={onSaveHandler} className="buttn">
+          Save
         </button>
       </div>
     </Modal>
