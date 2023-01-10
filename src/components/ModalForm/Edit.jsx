@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Modal } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+
 const Edit = ({
   isEditModalVisible,
   agents,
@@ -24,6 +26,24 @@ const Edit = ({
   const onChangeRealestate = (e) => {
     let copyObj = JSON.parse(JSON.stringify(agentOnEdit));
     setAgentOnEdit({ ...copyObj, realestate: e.target.value });
+  };
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onabort = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
+  };
+  const onChangePhoto = (e) => {
+    let copyObj = JSON.parse(JSON.stringify(agentOnEdit));
+    console.log(e.target.files[0], "testing gol");
+    const file = e.target.files[0];
+    console.log(file, "testing file");
+    getBase64(file).then((base64) => {
+      console.log(base64, "testing filee");
+      setAgentOnEdit({ ...copyObj, photo: base64 });
+    });
   };
   const cancelEditt = () => {
     setAgentOnEdit(null);
@@ -101,7 +121,19 @@ const Edit = ({
           ></input>
         </div>
         <br></br>
-        <br></br>
+        <div className="modal-forms">
+          <label htmlFor="photoupload" className="upload">
+            <UploadOutlined />
+          </label>
+          <h3 className="upload-text">Change Photo</h3>
+          <input
+            files={agentOnEdit?.photo}
+            style={{ display: "none", visibility: "hidden" }}
+            type="file"
+            id="photoupload"
+            onChange={onChangePhoto}
+          ></input>
+        </div>
         <button onClick={onSaveHandler} className="buttn">
           Save
         </button>

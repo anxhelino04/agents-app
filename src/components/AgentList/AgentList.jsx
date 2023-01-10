@@ -16,7 +16,8 @@ const AgentList = ({ agents, deleteAgent, handleEdit, showEditModal }) => {
         {agents?.map((agent, index) => {
           return (
             <div className="agentCard" key={index}>
-              <div style={{ marginInline: "6.5em" }}>
+              <img className="img" width="130" alt="img" src={agent?.photo} />
+              <div>
                 <p
                   onClick={() => {
                     setSelectedID(index);

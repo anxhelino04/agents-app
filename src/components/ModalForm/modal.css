@@ -64,6 +64,15 @@
   color: white;
   margin-left: 3px;
 }
+.upload {
+  color: white;
+  margin-left: 104px;
+  font-size: 3.5em;
+  cursor: pointer;
+}
+.upload:hover {
+  opacity: 60%;
+}
 .msg {
   color: white;
   margin: 3px;
@@ -75,4 +84,8 @@ input[type="number"].input-form::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.upload-text {
+  color: white;
+  margin: -16px 0px 16px 73px;
 }

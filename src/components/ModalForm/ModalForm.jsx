@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "antd";
 import "./modal.css";
 import { nanoid } from "nanoid";
-
+import { UploadOutlined } from "@ant-design/icons";
 const ModalForm = ({
   isModalOpen,
   handleCancel,
@@ -14,9 +14,24 @@ const ModalForm = ({
   const [pnumber, setPnumber] = useState();
   const [email, setEmail] = useState("");
   const [realestate, setRealestate] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [fnamemsg, setFnamemsg] = useState("");
   const [pnumbermsg, setPnumbermsg] = useState("");
   const [emailmsg, setEmailmsg] = useState("");
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onabort = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
+  };
+  const HandleImage = (e) => {
+    const file = e.target.files[0];
+    getBase64(file).then((base64) => {
+      setPhoto(base64);
+    });
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     let agent = {
@@ -25,6 +40,7 @@ const ModalForm = ({
       email,
       realestate,
       id: nanoid(6),
+      photo: photo,
     };
     if (fname.length > 0 && pnumber.length > 0 && email.length > 0) {
       setAgents([...agents, agent]);
@@ -32,16 +48,23 @@ const ModalForm = ({
       setEmail("");
       setPnumber("");
       setRealestate("");
+      setPhoto(null);
       setIsModalOpen(false);
     }
-    if (fname.length < 1) {
+    if (fname?.length < 1) {
       setFnamemsg("*Full name is required");
+    } else if (fname?.length > 0) {
+      setFnamemsg("");
     }
-    if (pnumber.length < 1) {
+    if (pnumber?.length < 1) {
       setPnumbermsg("*Number is required");
+    } else if (pnumber?.length > 0) {
+      setPnumbermsg("");
     }
-    if (email.length < 1) {
+    if (email?.length < 1) {
       setEmailmsg("*Email is required");
+    } else if (email?.length) {
+      setEmailmsg("");
     }
   };
   useEffect(() => {
@@ -105,8 +128,18 @@ const ModalForm = ({
             onChange={(e) => setRealestate(e.target.value)}
           ></input>
         </div>
-        <br></br>
-        <br></br>
+        <div className="modal-forms">
+          <label htmlFor="photoupload" className="upload">
+            <UploadOutlined />
+          </label>
+          <h3 className="upload-text">Upload Photo</h3>
+          <input
+            style={{ display: "none", visibility: "hidden" }}
+            type="file"
+            id="photoupload"
+            onChange={HandleImage}
+          ></input>
+        </div>
         <button onClick={submitHandler} className="buttn">
           ADD
         </button>
