@@ -6,6 +6,9 @@
   padding-inline: 18px;
   cursor: pointer;
   border: none;
+  margin-right: 10em;
+  margin-top: 1em;
+  position: relative;
 }
 .addbutton:hover {
   opacity: 80%;

@@ -9,6 +9,8 @@ const ModalForm = ({
   setIsModalOpen,
   setAgents,
   agents,
+  loading,
+  setLoading,
 }) => {
   const [fname, setFname] = useState("");
   const [pnumber, setPnumber] = useState();
@@ -50,6 +52,7 @@ const ModalForm = ({
       setRealestate("");
       setPhoto(null);
       setIsModalOpen(false);
+      setLoading(true);
     }
     if (fname?.length < 1) {
       setFnamemsg("*Full name is required");
@@ -67,9 +70,13 @@ const ModalForm = ({
       setEmailmsg("");
     }
   };
+  setTimeout(() => {
+    setLoading(false);
+  }, 2100);
   useEffect(() => {
     localStorage.setItem("agents", JSON.stringify(agents));
   }, [agents]);
+  console.log(loading, "testing loadinggg");
 
   return (
     <Modal open={isModalOpen} onCancel={handleCancel}>
