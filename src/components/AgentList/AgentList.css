@@ -6,31 +6,75 @@
 }
 .cardDetails {
   flex: 1;
-  border: 2px solid blue;
+  border: 2px solid black;
   min-height: 481px;
+  text-align: center;
 }
 .container {
   display: flex;
   margin-block: 2em;
-  margin-inline: 16em;
+  margin-inline: 14em;
   gap: 2em;
   max-height: 30em;
 }
 .fname {
   margin: 0px;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  max-height: 15px;
+  margin-bottom: 10px;
 }
 .content {
   margin: 0px;
-  font-size: 11px;
+  margin-bottom: 2px;
+  font-size: 10px;
 }
 .delete {
   height: 1.2em;
   width: 1.2em;
   cursor: pointer;
+  padding: 0;
+  border: none;
+  background-color: white;
+  margin-right: 2px;
 }
 .img {
   margin-top: -0.5px;
   margin-left: -1px;
-  margin-right: 2em;
+  margin-right: 1.5em;
+}
+.bttns {
+  margin-left: auto;
+  margin-right: 2px;
+  margin-top: 4px;
+}
+.bigCard-name {
+  font-size: 40px;
+  font-weight: 650;
+}
+.Realestate {
+  margin-top: -30px;
+  text-align: end;
+  margin-right: 42px;
+  font-weight: 370;
+}
+.article {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.bigCard-content {
+  font-size: 13px;
+  opacity: 100%;
+}
+.bigcard-footer {
+  display: flex;
+  gap: 1em;
+  margin-top: -48px;
+  background-color: rgb(48, 51, 56, 0.7);
+  opacity: 80%;
+  margin-inline: 1px;
+  border-radius: 4px;
 }

@@ -70,7 +70,6 @@ const ModalForm = ({
   useEffect(() => {
     localStorage.setItem("agents", JSON.stringify(agents));
   }, [agents]);
-  console.log(agents, "setting agents");
 
   return (
     <Modal open={isModalOpen} onCancel={handleCancel}>

@@ -37,11 +37,8 @@ const Edit = ({
   };
   const onChangePhoto = (e) => {
     let copyObj = JSON.parse(JSON.stringify(agentOnEdit));
-    console.log(e.target.files[0], "testing gol");
     const file = e.target.files[0];
-    console.log(file, "testing file");
     getBase64(file).then((base64) => {
-      console.log(base64, "testing filee");
       setAgentOnEdit({ ...copyObj, photo: base64 });
     });
   };
@@ -49,7 +46,6 @@ const Edit = ({
     setAgentOnEdit(null);
     cancelEdit();
   };
-  console.log(agentOnEdit, "agentOnEdit in edit component");
 
   const onSaveHandler = () => {
     let copyAgents = JSON.parse(JSON.stringify(agents));

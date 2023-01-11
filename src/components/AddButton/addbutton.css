@@ -5,4 +5,8 @@
   border-radius: 8px;
   padding-inline: 18px;
   cursor: pointer;
+  border: none;
+}
+.addbutton:hover {
+  opacity: 80%;
 }

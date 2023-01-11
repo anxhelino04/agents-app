@@ -13,8 +13,11 @@
   cursor: pointer;
   border: none;
   margin: 0px 191px;
+  border: none;
 }
-
+.buttn:hover {
+  opacity: 70%;
+}
 .ant-modal .ant-modal-content {
   position: relative;
   background-color: #1a4a75;
@@ -42,8 +45,6 @@
   color: white;
 }
 .modal-forms {
-  /* display: flex; */
-  /* justify-content: center; */
   margin-left: 114px;
 }
 .containerr {

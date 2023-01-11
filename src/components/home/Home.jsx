@@ -18,6 +18,7 @@ const Home = () => {
       return element?.fname !== fname;
     });
     setAgents(filteredAgents);
+    window.location.reload();
   };
   const cancelModal = () => {
     setIsModalOpen(false);
@@ -29,7 +30,6 @@ const Home = () => {
 
   const handleEdit = (agent) => {
     setAgentOnEdit(agent);
-    console.log(agent, "agentOnEdit when selected");
   };
 
   const getDatafromLs = () => {
